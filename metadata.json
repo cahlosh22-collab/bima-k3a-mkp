@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Manajemen Muatan Kapal dan Penumpang",
+  "description": "Aplikasi manajemen operasional kapal, manifest penumpang, kargo muatan, rute, jadwal pelayaran, dan analitik real-time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

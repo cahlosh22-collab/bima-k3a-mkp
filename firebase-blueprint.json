@@ -1,0 +1,105 @@
+{
+  "entities": {
+    "Ship": {
+      "title": "Ship",
+      "description": "Registered vessels / ships",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "code": { "type": "string" },
+        "type": { "type": "string" },
+        "passengerCapacity": { "type": "number" },
+        "cargoCapacityTons": { "type": "number" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "code", "passengerCapacity", "cargoCapacityTons"]
+    },
+    "Route": {
+      "title": "Route",
+      "description": "Voyage routes between ports",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "origin": { "type": "string" },
+        "destination": { "type": "string" },
+        "distanceNauticalMiles": { "type": "number" },
+        "estimatedHours": { "type": "number" },
+        "basePrice": { "type": "number" }
+      },
+      "required": ["origin", "destination", "estimatedHours", "basePrice"]
+    },
+    "Voyage": {
+      "title": "Voyage",
+      "description": "Scheduled ship voyages",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "shipId": { "type": "string" },
+        "routeId": { "type": "string" },
+        "departureTime": { "type": "string" },
+        "arrivalTime": { "type": "string" },
+        "status": { "type": "string" },
+        "currentPassengers": { "type": "number" },
+        "currentCargoTons": { "type": "number" }
+      },
+      "required": ["shipId", "routeId", "departureTime", "arrivalTime", "status"]
+    },
+    "PassengerManifest": {
+      "title": "PassengerManifest",
+      "description": "Passenger ticket and manifest records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "voyageId": { "type": "string" },
+        "passengerName": { "type": "string" },
+        "idNumber": { "type": "string" },
+        "ticketNumber": { "type": "string" },
+        "classType": { "type": "string" },
+        "seatNumber": { "type": "string" },
+        "fare": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["voyageId", "passengerName", "idNumber", "ticketNumber", "classType", "fare"]
+    },
+    "CargoManifest": {
+      "title": "CargoManifest",
+      "description": "Cargo and container freight records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "voyageId": { "type": "string" },
+        "shipperName": { "type": "string" },
+        "cargoDescription": { "type": "string" },
+        "weightTons": { "type": "number" },
+        "containerNumber": { "type": "string" },
+        "freightCost": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["voyageId", "shipperName", "cargoDescription", "weightTons", "freightCost"]
+    }
+  },
+  "firestore": {
+    "/ships/{shipId}": {
+      "schema": "Ship",
+      "description": "Ships collection"
+    },
+    "/routes/{routeId}": {
+      "schema": "Route",
+      "description": "Routes collection"
+    },
+    "/voyages/{voyageId}": {
+      "schema": "Voyage",
+      "description": "Voyages collection"
+    },
+    "/passenger_manifests/{passengerId}": {
+      "schema": "PassengerManifest",
+      "description": "Passenger manifests collection"
+    },
+    "/cargo_manifests/{cargoId}": {
+      "schema": "CargoManifest",
+      "description": "Cargo manifests collection"
+    }
+  }
+}
